@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Request Application - Edit</title>
+<!--    <link rel="stylesheet" href="style.css">-->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+
+            form {
+                gap: 10px;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            input[type="tel"],
+            input[type="email"] {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>T4TEQ SOFTWARE SOLUTIONS</h1>
+    <h2>Edit Certificate Request</h2>
+
+    <!-- Form for editing -->
+    <form th:action="@{/forms/save}" method="post" th:object="${requestForm}">
+        <div class="form-group">
+            <label for="formNo">Form No.</label>
+            <input type="text" id="formNo" th:field="*{formno}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" th:field="*{date}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fullName">Full Name (in Caps with initials last)</label>
+            <input type="text" id="fullName" th:field="*{name}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="regNo">Reg. No.</label>
+            <input type="text" id="regNo" th:field="*{regno}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="whatsappNo">Whatsapp No.</label>
+            <input type="tel" id="whatsappNo" th:field="*{whatno}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email id</label>
+            <input type="email" id="email" th:field="*{email}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="courseCode">Course & Code</label>
+            <input type="text" id="courseCode" th:field="*{coursecode}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="trainerName">Trainer Name</label>
+            <input type="text" id="trainerName" th:field="*{trainername}" required>
+        </div>
+
+        <!-- Hidden field for the form ID -->
+        <input type="hidden" th:field="*{id}">
+
+        <button type="submit">Update</button>
+    </form>
+
+    <!-- Button to return to the form list -->
+    <a href="/forms">Back to Form List</a>
+</div>
+</body>
+</html>

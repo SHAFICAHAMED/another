@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Form</title>
+<!--    <link rel="stylesheet" href="style.css">-->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+
+            form {
+                gap: 10px;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            input[type="tel"],
+            input[type="email"] {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+<h1>Create or Edit Certificate Request</h1>
+
+<form th:action="@{/forms/save}" method="post" th:object="${requestForm}">
+    <label for="formNo">Form No:</label>
+    <input type="text" id="formNo" th:field="*{formno}" required />
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" th:field="*{date}" required />
+
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="regNo">Reg. No:</label>
+    <input type="text" id="regNo" th:field="*{regno}" required />
+
+    <label for="whatno">Whatsapp No:</label>
+    <input type="tel" id="whatno" th:field="*{whatno}" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required />
+
+    <label for="coursecode">Course Code:</label>
+    <input type="text" id="coursecode" th:field="*{coursecode}" required />
+
+    <label for="trainername">Trainer Name:</label>
+    <input type="text" id="trainername" th:field="*{trainername}" required />
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>
